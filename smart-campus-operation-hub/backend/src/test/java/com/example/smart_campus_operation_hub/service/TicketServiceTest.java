@@ -66,6 +66,7 @@ class TicketServiceTest {
         mockTechnician.setId(2L);
         mockTechnician.setName("Test Tech");
         mockTechnician.setRole(Role.TECHNICIAN);
+        mockTechnician.setIsActive(true);
 
         mockResource = new Resource();
         mockResource.setId(10L);
