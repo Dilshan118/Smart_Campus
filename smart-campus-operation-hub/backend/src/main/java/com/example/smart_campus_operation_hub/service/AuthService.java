@@ -30,6 +30,9 @@ public class AuthService {
 
     public String handleOAuth2Login(OAuth2User oAuth2User) {
         String email = oAuth2User.getAttribute("email");
+        if (email == null) {
+            throw new UnauthorizedException("Email not provided by OAuth2 provider.");
+        }
         String name = oAuth2User.getAttribute("name");
         String avatarUrl = oAuth2User.getAttribute("picture");
         String providerId = oAuth2User.getAttribute("sub");
