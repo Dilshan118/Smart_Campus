@@ -159,13 +159,13 @@ export default function LoginPage() {
               lineHeight: 1.1,
               marginBottom: '16px'
             }}>
-              Welcome to<br/>SLIIT Campus Hub
+              Welcome to<br/>Smart Campus Hub
             </h2>
             <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.5, maxWidth: '90%' }}>
               Sign in with your university account to explore resources, book spaces, and get help.
             </p>
           </div>
-
+ 
           <div style={{
             background: 'var(--bg-surface)',
             padding: '40px',
@@ -191,7 +191,7 @@ export default function LoginPage() {
               </svg>
               Sign in with Google
             </button>
-
+ 
             {/* Label over lines. Enforcing the Forbid Rule. */}
             <div style={{
               margin: '40px 0',
@@ -204,7 +204,7 @@ export default function LoginPage() {
             }}>
               Students & Faculty
             </div>
-
+ 
             {/* Ghost outline info box using background tonal shift */}
             <div style={{
               backgroundColor: 'var(--bg-primary)',
@@ -222,7 +222,7 @@ export default function LoginPage() {
                 <Info size={14} color="white" strokeWidth={2.5} />
               </div>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.6, fontWeight: 500 }}>
-                Sign in with your SLIIT student or staff email. Your account will automatically be created 
+                Sign in with your university student or staff email. Your account will automatically be created 
                 and securely connected to your campus profile.
               </p>
             </div>
