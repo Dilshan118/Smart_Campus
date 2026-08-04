@@ -177,11 +177,11 @@ graph TD
 ```mermaid
 erDiagram
     USER ||--o{ TICKET : "creates"
-    USER ||--o{ TICKET : "assigned_to (technician)"
+    USER ||--o{ TICKET : "assigned_to"
     USER ||--o{ BOOKING : "reserves"
     USER ||--o{ COMMENT : "authors"
     USER ||--o{ NOTIFICATION : "receives"
-    USER ||--o1 NOTIFICATION_PREFERENCE : "owns"
+    USER ||--o| NOTIFICATION_PREFERENCE : "owns"
     
     RESOURCE ||--o{ BOOKING : "booked_in"
     
