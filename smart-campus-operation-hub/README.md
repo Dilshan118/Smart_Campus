@@ -1,47 +1,48 @@
+
 # 🏫 Smart Campus Operation Hub
 
-> **Integrated Enterprise Campus Operations, Facility Maintenance & Resource Booking Platform**  
+> **Integrated Enterprise Campus Operations, Facility Maintenance & Resource Booking Platform**
 > *A full-stack project built for managing day-to-day operations at higher education institutions, submitted in partial fulfillment of the requirements for the BSc (Hons) in Information Technology at SLIIT.*
 
 ---
 
-[![Java](https://img.shields.io/badge/Java-21%20LTS-orange.svg?style=flat-square&logo=openjdk)](https://www.oracle.com/java/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4%2F4.0-brightgreen.svg?style=flat-square&logo=springboot)](https://spring.io/projects/spring-boot)
+[![Java](<https://img.shields.io/badge/Java-21%20LTS-orange.svg?style=flat-square&logo=openjdk>)](https://www.oracle.com/java/)
+[![Spring Boot](<https://img.shields.io/badge/Spring%20Boot-3.4%2F4.0-brightgreen.svg?style=flat-square&logo=springboot>)](https://spring.io/projects/spring-boot)
 [![React](https://img.shields.io/badge/React-19.0-blue.svg?style=flat-square&logo=react)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-8.0-646CFF.svg?style=flat-square&logo=vite)](https://vitejs.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4.0-38B2AC.svg?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![Tailwind CSS](<https://img.shields.io/badge/Tailwind%20CSS-4.0-38B2AC.svg?style=flat-square&logo=tailwind-css>)](https://tailwindcss.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-NeonDB-336791.svg?style=flat-square&logo=postgresql)](https://neon.tech/)
-[![Security](https://img.shields.io/badge/Auth-Google%20OAuth2%20%2B%20JWT-red.svg?style=flat-square&logo=jsonwebtokens)](https://jwt.io/)
+[![Security](<https://img.shields.io/badge/Auth-Google%20OAuth2%20%2B%20JWT-red.svg?style=flat-square&logo=jsonwebtokens>)](https://jwt.io/)
 [![License](https://img.shields.io/badge/License-Academic-lightgrey.svg?style=flat-square)](#license)
 
 ---
 
 ## 📌 Table of Contents
 
-- [Overview & System Vision](#-overview--system-vision)
+- [Overview &amp; System Vision](#-overview--system-vision)
 - [Problems Solved](#-problems-solved)
-- [Core Features & Modules](#-core-features--modules)
-  - [1. User Management & Onboarding Security](#1-user-management--onboarding-security)
-  - [2. Maintenance Ticket System & SLA Engine](#2-maintenance-ticket-system--sla-engine)
+- [Core Features &amp; Modules](#-core-features--modules)
+  - [1. User Management &amp; Onboarding Security](#1-user-management--onboarding-security)
+  - [2. Maintenance Ticket System &amp; SLA Engine](#2-maintenance-ticket-system--sla-engine)
   - [3. Campus Resource Reservation Engine](#3-campus-resource-reservation-engine)
-  - [4. Campus Resource Catalog & Smart Finder](#4-campus-resource-catalog--smart-finder)
+  - [4. Campus Resource Catalog &amp; Smart Finder](#4-campus-resource-catalog--smart-finder)
   - [5. Event-Driven Notification System](#5-event-driven-notification-system)
-  - [6. Operational Analytics & Intelligence Dashboard](#6-operational-analytics--intelligence-dashboard)
-- [System Architecture & Design](#-system-architecture--design)
+  - [6. Operational Analytics &amp; Intelligence Dashboard](#6-operational-analytics--intelligence-dashboard)
+- [System Architecture &amp; Design](#-system-architecture--design)
   - [High-Level Architecture](#high-level-architecture)
-  - [Data Model & Entity Relationships](#data-model--entity-relationships)
+  - [Data Model &amp; Entity Relationships](#data-model--entity-relationships)
 - [Technology Stack](#-technology-stack)
 - [Project Directory Structure](#-project-directory-structure)
 - [API Reference](#-api-reference)
-- [Getting Started & Local Setup](#-getting-started--local-setup)
+- [Getting Started &amp; Local Setup](#-getting-started--local-setup)
   - [Prerequisites](#prerequisites)
   - [1. Clone Repository](#1-clone-repository)
   - [2. Backend Setup](#2-backend-setup)
   - [3. Frontend Setup](#3-frontend-setup)
   - [4. Initial Admin Account Bootstrap](#4-initial-admin-account-bootstrap)
 - [Deployment Guide](#-deployment-guide)
-- [Known Limitations & Future Roadmap](#-known-limitations--future-roadmap)
-- [License & Acknowledgments](#-license--acknowledgments)
+- [Known Limitations &amp; Future Roadmap](#-known-limitations--future-roadmap)
+- [License &amp; Acknowledgments](#-license--acknowledgments)
 
 ---
 
@@ -50,6 +51,7 @@
 Higher education campuses function as micro-cities. On any given day, thousands of students, faculty, maintenance staff, and administrators interact with hundreds of physical facilities—lecture halls, specialized laboratories, AV equipment, study rooms, and recreational areas.
 
 Without a centralized operational hub, campus management degrades into operational chaos:
+
 * Maintenance issues are communicated through informal channels or buried in emails.
 * Facilities and expensive lab gear are double-booked or sit underutilized.
 * Service Level Agreements (SLAs) for critical facilities failures (e.g., power outages in exam halls, broken air conditioning in server rooms) are completely unmonitored.
@@ -61,14 +63,14 @@ Without a centralized operational hub, campus management degrades into operation
 
 ## ⚡ Problems Solved
 
-| Operational Problem | Traditional Bottleneck | Smart Campus Hub Solution |
-| :--- | :--- | :--- |
-| **Operational Fragmentation** | Disjointed emails, physical paperwork, and verbal reports led to untracked maintenance issues. | **Centralized Incident Lifecycle**: Ticket lifecycle management (`OPEN` → `IN_PROGRESS` → `RESOLVED` → `CLOSED`) with full comment histories, technician assignments, and file attachments. |
-| **Unmonitored SLA Breaches** | Critical facility failures lingered without resolution deadlines or accountability. | **Automated SLA Engine**: Priority-driven resolution windows (Critical: 4h, High: 24h, Medium: 48h, Low: 72h). Background cron jobs (`SlaEscalationScheduler`) detect imminent breaches and escalate to managers. |
-| **Resource Double-Bookings** | Overlapping spreadsheets and manual booking approvals resulted in classroom collisions. | **Collision-Proof Reservation Engine**: Real-time availability calendars, instant conflict validation algorithms, and custom approval workflows (Auto-approval vs. Admin Review). |
-| **Manual Resource Matching** | Students struggled to identify spaces matching specific criteria (e.g., room capacity, projector availability). | **Smart Resource Finder**: Algorithmic resource recommendation engine matching location, capacity, resource type, and required amenities to user requests. |
-| **Unvetted User Access** | Open registration risked unauthorized administrative or booking access. | **OAuth2 + Admin Approval Gate**: Passwordless Google Authentication coupled with a multi-stage user approval state machine (`PENDING` → `APPROVED` / `REJECTED` / `SUSPENDED`) and fine-grained RBAC. |
-| **Operational Blind Spots** | Facilities leaders lacked visibility into equipment failure patterns and department efficiency. | **Real-Time Analytics Dashboard**: Visual metrics tracking ticket category trends, SLA compliance rates, resource utilization metrics, and exportable reports. |
+| Operational Problem                 | Traditional Bottleneck                                                                                          | Smart Campus Hub Solution                                                                                                                                                                                                 |
+| :---------------------------------- | :-------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Operational Fragmentation** | Disjointed emails, physical paperwork, and verbal reports led to untracked maintenance issues.                  | **Centralized Incident Lifecycle**: Ticket lifecycle management (`OPEN` → `IN_PROGRESS` → `RESOLVED` → `CLOSED`) with full comment histories, technician assignments, and file attachments.              |
+| **Unmonitored SLA Breaches**  | Critical facility failures lingered without resolution deadlines or accountability.                             | **Automated SLA Engine**: Priority-driven resolution windows (Critical: 4h, High: 24h, Medium: 48h, Low: 72h). Background cron jobs (`SlaEscalationScheduler`) detect imminent breaches and escalate to managers. |
+| **Resource Double-Bookings**  | Overlapping spreadsheets and manual booking approvals resulted in classroom collisions.                         | **Collision-Proof Reservation Engine**: Real-time availability calendars, instant conflict validation algorithms, and custom approval workflows (Auto-approval vs. Admin Review).                                   |
+| **Manual Resource Matching**  | Students struggled to identify spaces matching specific criteria (e.g., room capacity, projector availability). | **Smart Resource Finder**: Algorithmic resource recommendation engine matching location, capacity, resource type, and required amenities to user requests.                                                          |
+| **Unvetted User Access**      | Open registration risked unauthorized administrative or booking access.                                         | **OAuth2 + Admin Approval Gate**: Passwordless Google Authentication coupled with a multi-stage user approval state machine (`PENDING` → `APPROVED` / `REJECTED` / `SUSPENDED`) and fine-grained RBAC.     |
+| **Operational Blind Spots**   | Facilities leaders lacked visibility into equipment failure patterns and department efficiency.                 | **Real-Time Analytics Dashboard**: Visual metrics tracking ticket category trends, SLA compliance rates, resource utilization metrics, and exportable reports.                                                      |
 
 ---
 
@@ -157,7 +159,7 @@ The project follows a decoupled client-server architecture utilizing RESTful JSO
 graph TD
     Client[React 19 + Vite Frontend SPA] -->|HTTPS / REST API| API[Spring Boot REST Controllers]
     Client -->|Google OAuth2 Flow| Google[Google Identity Provider]
-    
+  
     subgraph Backend Application [Java 21 Spring Boot Container]
         API --> AuthFilter[JWT Authentication & Security Filter]
         AuthFilter --> Controllers[REST Controllers / Endpoint Layer]
@@ -182,9 +184,9 @@ erDiagram
     USER ||--o{ COMMENT : "authors"
     USER ||--o{ NOTIFICATION : "receives"
     USER ||--o1 NOTIFICATION_PREFERENCE : "owns"
-    
+  
     RESOURCE ||--o{ BOOKING : "booked_in"
-    
+  
     TICKET ||--o{ COMMENT : "contains"
     TICKET ||--o{ ATTACHMENT : "has"
 ```
@@ -195,40 +197,40 @@ erDiagram
 
 ### Frontend (Client-Side)
 
-| Framework / Tool | Version | Purpose |
-| :--- | :--- | :--- |
-| **React** | 19.0 | Component-driven user interface |
-| **Vite** | 8.0 | Next-generation frontend build tool and dev server |
-| **React Router** | 7.0 | Declarative client-side routing & protected routes |
-| **Tailwind CSS** | 4.0 | Utility-first responsive design framework |
-| **Recharts** | 3.0 | Modern composable charting library |
-| **Axios** | 1.15 | Promise-based HTTP client with centralized interceptors |
-| **Lucide React** | 1.0+ | Modern UI icon suite |
-| **QRCode.react** | 4.0+ | SVG/Canvas QR code renderer |
-| **date-fns** | 4.0 | Date parsing, manipulation, and SLA countdown math |
-| **Swiper** | 11.0 | Mobile-touch responsive sliders & carousels |
+| Framework / Tool       | Version | Purpose                                                 |
+| :--------------------- | :------ | :------------------------------------------------------ |
+| **React**        | 19.0    | Component-driven user interface                         |
+| **Vite**         | 8.0     | Next-generation frontend build tool and dev server      |
+| **React Router** | 7.0     | Declarative client-side routing & protected routes      |
+| **Tailwind CSS** | 4.0     | Utility-first responsive design framework               |
+| **Recharts**     | 3.0     | Modern composable charting library                      |
+| **Axios**        | 1.15    | Promise-based HTTP client with centralized interceptors |
+| **Lucide React** | 1.0+    | Modern UI icon suite                                    |
+| **QRCode.react** | 4.0+    | SVG/Canvas QR code renderer                             |
+| **date-fns**     | 4.0     | Date parsing, manipulation, and SLA countdown math      |
+| **Swiper**       | 11.0    | Mobile-touch responsive sliders & carousels             |
 
 ### Backend (Server-Side)
 
-| Framework / Tool | Version | Purpose |
-| :--- | :--- | :--- |
-| **Java** | 21 LTS | Modern Java runtime featuring virtual threads |
-| **Spring Boot** | 3.4 / 4.0 | Enterprise Java application framework |
-| **Spring Security** | 6.x | Comprehensive authentication, authorization & CORS config |
-| **Spring Data JPA** | 3.x | Object-Relational Mapping (Hibernate implementation) |
-| **PostgreSQL** | 16+ | Relational SQL database engine (Hosted on NeonDB) |
-| **JJWT (Java JWT)**| 0.12.6 | Cryptographic JWT signing (`HS256`) and verification |
-| **Spring OAuth2 Client**| 6.x | Google OAuth2 token exchange & identity parsing |
-| **Maven** | 3.9+ | Build automation and dependency management |
+| Framework / Tool               | Version   | Purpose                                                   |
+| :----------------------------- | :-------- | :-------------------------------------------------------- |
+| **Java**                 | 21 LTS    | Modern Java runtime featuring virtual threads             |
+| **Spring Boot**          | 3.4 / 4.0 | Enterprise Java application framework                     |
+| **Spring Security**      | 6.x       | Comprehensive authentication, authorization & CORS config |
+| **Spring Data JPA**      | 3.x       | Object-Relational Mapping (Hibernate implementation)      |
+| **PostgreSQL**           | 16+       | Relational SQL database engine (Hosted on NeonDB)         |
+| **JJWT (Java JWT)**      | 0.12.6    | Cryptographic JWT signing (`HS256`) and verification    |
+| **Spring OAuth2 Client** | 6.x       | Google OAuth2 token exchange & identity parsing           |
+| **Maven**                | 3.9+      | Build automation and dependency management                |
 
 ### Infrastructure & DevOps
 
-| Platform / Tool | Target | Configuration |
-| :--- | :--- | :--- |
-| **NeonDB** | Cloud Database | Serverless PostgreSQL with SSL connection pooling |
-| **Vercel** | Frontend Hosting | Single Page Application rewrites (`vercel.json`) |
-| **Railway** | Backend Hosting | Docker containerized deployment (`railway.toml`) |
-| **Docker** | Containerization | Multi-stage Eclipse Temurin JDK 21 Alpine image |
+| Platform / Tool   | Target           | Configuration                                      |
+| :---------------- | :--------------- | :------------------------------------------------- |
+| **NeonDB**  | Cloud Database   | Serverless PostgreSQL with SSL connection pooling  |
+| **Vercel**  | Frontend Hosting | Single Page Application rewrites (`vercel.json`) |
+| **Railway** | Backend Hosting  | Docker containerized deployment (`railway.toml`) |
+| **Docker**  | Containerization | Multi-stage Eclipse Temurin JDK 21 Alpine image    |
 
 ---
 
@@ -302,27 +304,27 @@ smart-campus-operation-hub/
 
 All backend API routes are prefixed with `/api/v1`. Authenticated endpoints require a standard HTTP Authorization header: `Bearer <JWT_TOKEN>`.
 
-| Module | HTTP Method | Endpoint Path | Description | Access Required |
-| :--- | :--- | :--- | :--- | :--- |
-| **Auth** | `POST` | `/api/v1/auth/google` | Exchange Google OAuth ID token for JWT token | Public |
-| **Auth** | `GET` | `/api/v1/auth/me` | Retrieve authenticated user identity & profile | Authenticated |
-| **Users** | `GET` | `/api/v1/users` | List all system users with status filtering | `ADMIN` |
-| **Users** | `PUT` | `/api/v1/users/{id}/status` | Update user status (`APPROVED`, `REJECTED`, `SUSPENDED`) | `ADMIN` |
-| **Users** | `PUT` | `/api/v1/users/{id}/role` | Escalate or change user role (`ADMIN`, `MANAGER`, etc.) | `ADMIN` |
-| **Tickets**| `GET` | `/api/v1/tickets` | List tickets (filtered by user role/ownership) | Authenticated |
-| **Tickets**| `POST` | `/api/v1/tickets` | Create a new maintenance ticket | Authenticated |
-| **Tickets**| `GET` | `/api/v1/tickets/{id}` | Fetch ticket details, comments, and attachments | Authenticated |
-| **Tickets**| `PUT` | `/api/v1/tickets/{id}/status` | Update ticket status (`IN_PROGRESS`, `RESOLVED`, etc.) | `TECHNICIAN`, `MANAGER`, `ADMIN` |
-| **Tickets**| `PUT` | `/api/v1/tickets/{id}/assign` | Assign technician to ticket | `MANAGER`, `ADMIN` |
-| **Comments**|`POST` | `/api/v1/tickets/{id}/comments`| Add discussion comment to a ticket thread | Authenticated |
-| **Bookings**|`GET` | `/api/v1/bookings` | Retrieve user/all resource reservations | Authenticated |
-| **Bookings**|`POST` | `/api/v1/bookings` | Submit new resource booking request | Authenticated |
-| **Bookings**|`PUT` | `/api/v1/bookings/{id}/status`| Approve, reject, or cancel booking | `MANAGER`, `ADMIN` (or owner) |
-| **Resources**|`GET` | `/api/v1/resources` | Query resource catalog with category filters | Authenticated |
-| **Resources**|`POST` | `/api/v1/resources` | Add new facility or equipment asset | `MANAGER`, `ADMIN` |
-| **Notifications**|`GET`| `/api/v1/notifications` | Fetch user notifications | Authenticated |
-| **Notifications**|`PUT`| `/api/v1/notifications/{id}/read`| Mark notification as read | Authenticated |
-| **Analytics**|`GET` | `/api/v1/analytics/summary` | Retrieve operational metrics & chart aggregates | `MANAGER`, `ADMIN` |
+| Module                  | HTTP Method | Endpoint Path                       | Description                                                    | Access Required                        |
+| :---------------------- | :---------- | :---------------------------------- | :------------------------------------------------------------- | :------------------------------------- |
+| **Auth**          | `POST`    | `/api/v1/auth/google`             | Exchange Google OAuth ID token for JWT token                   | Public                                 |
+| **Auth**          | `GET`     | `/api/v1/auth/me`                 | Retrieve authenticated user identity & profile                 | Authenticated                          |
+| **Users**         | `GET`     | `/api/v1/users`                   | List all system users with status filtering                    | `ADMIN`                              |
+| **Users**         | `PUT`     | `/api/v1/users/{id}/status`       | Update user status (`APPROVED`, `REJECTED`, `SUSPENDED`) | `ADMIN`                              |
+| **Users**         | `PUT`     | `/api/v1/users/{id}/role`         | Escalate or change user role (`ADMIN`, `MANAGER`, etc.)    | `ADMIN`                              |
+| **Tickets**       | `GET`     | `/api/v1/tickets`                 | List tickets (filtered by user role/ownership)                 | Authenticated                          |
+| **Tickets**       | `POST`    | `/api/v1/tickets`                 | Create a new maintenance ticket                                | Authenticated                          |
+| **Tickets**       | `GET`     | `/api/v1/tickets/{id}`            | Fetch ticket details, comments, and attachments                | Authenticated                          |
+| **Tickets**       | `PUT`     | `/api/v1/tickets/{id}/status`     | Update ticket status (`IN_PROGRESS`, `RESOLVED`, etc.)     | `TECHNICIAN`, `MANAGER`, `ADMIN` |
+| **Tickets**       | `PUT`     | `/api/v1/tickets/{id}/assign`     | Assign technician to ticket                                    | `MANAGER`, `ADMIN`                 |
+| **Comments**      | `POST`    | `/api/v1/tickets/{id}/comments`   | Add discussion comment to a ticket thread                      | Authenticated                          |
+| **Bookings**      | `GET`     | `/api/v1/bookings`                | Retrieve user/all resource reservations                        | Authenticated                          |
+| **Bookings**      | `POST`    | `/api/v1/bookings`                | Submit new resource booking request                            | Authenticated                          |
+| **Bookings**      | `PUT`     | `/api/v1/bookings/{id}/status`    | Approve, reject, or cancel booking                             | `MANAGER`, `ADMIN` (or owner)      |
+| **Resources**     | `GET`     | `/api/v1/resources`               | Query resource catalog with category filters                   | Authenticated                          |
+| **Resources**     | `POST`    | `/api/v1/resources`               | Add new facility or equipment asset                            | `MANAGER`, `ADMIN`                 |
+| **Notifications** | `GET`     | `/api/v1/notifications`           | Fetch user notifications                                       | Authenticated                          |
+| **Notifications** | `PUT`     | `/api/v1/notifications/{id}/read` | Mark notification as read                                      | Authenticated                          |
+| **Analytics**     | `GET`     | `/api/v1/analytics/summary`       | Retrieve operational metrics & chart aggregates                | `MANAGER`, `ADMIN`                 |
 
 ---
 
@@ -331,6 +333,7 @@ All backend API routes are prefixed with `/api/v1`. Authenticated endpoints requ
 ### Prerequisites
 
 Ensure you have the following software installed locally:
+
 * **Node.js**: `v20.0.0` or higher
 * **Java Development Kit (JDK)**: `v21` (LTS)
 * **Apache Maven**: `v3.9.0` or higher
@@ -351,12 +354,13 @@ cd smart-campus-operation-hub
 ### 2. Backend Setup
 
 1. Navigate to the backend directory and copy the environment template:
+
    ```bash
    cd backend
    cp .env.example .env
    ```
-
 2. Configure your `.env` file with your credentials:
+
    ```env
    # Database connection string (PostgreSQL)
    DB_URL=jdbc:postgresql://localhost:5432/smart_campus?sslmode=disable
@@ -378,11 +382,12 @@ cd smart-campus-operation-hub
    # Frontend CORS Origin
    FRONTEND_URL=http://localhost:5173
    ```
-
 3. Build and launch the Spring Boot backend server:
+
    ```bash
    mvn clean spring-boot:run
    ```
+
    *The API server will boot on `http://localhost:8080`. Hibernate will automatically generate database tables on initial start.*
 
 ---
@@ -390,22 +395,24 @@ cd smart-campus-operation-hub
 ### 3. Frontend Setup
 
 1. Open a new terminal tab, navigate to the `frontend` folder, and copy the environment template:
+
    ```bash
    cd frontend
    cp .env.example .env
    ```
-
 2. Configure `.env`:
+
    ```env
    VITE_API_BASE_URL=http://localhost:8080/api/v1
    VITE_GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
    ```
-
 3. Install dependencies and start the Vite development server:
+
    ```bash
    npm install
    npm run dev
    ```
+
    *The web application will open at `http://localhost:5173`.*
 
 ---
@@ -437,6 +444,7 @@ cd frontend
 npm run build
 vercel --prod
 ```
+
 *Be sure to set `VITE_API_BASE_URL` and `VITE_GOOGLE_CLIENT_ID` in your Vercel Project Settings → Environment Variables.*
 
 ### Backend Deployment (Railway / Docker)
